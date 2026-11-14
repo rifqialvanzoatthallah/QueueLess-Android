@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.queueless.R
 import com.example.queueless.databinding.ActivityRegisterBinding
 import com.example.queueless.ui.mahasiswa.MahasiswaMainActivity
+import com.example.queueless.utils.applyStatusBarTopMargin
 import com.example.queueless.viewmodel.AuthViewModel
 import com.google.android.material.snackbar.Snackbar
 
@@ -21,6 +22,7 @@ class RegisterActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityRegisterBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        binding.btnBack.applyStatusBarTopMargin(extraDp = 12)
 
         setupObservers()
         setupListeners()

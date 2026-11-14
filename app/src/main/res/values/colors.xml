@@ -1,33 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- Warna Utama Modern (Deep Navy & Royal Cobalt) -->
-    <color name="primary_blue">#2563EB</color>
-    <color name="primary_blue_dark">#0F172A</color>
-    <color name="primary_blue_light">#EFF6FF</color>
+    <!-- Warna Utama Universitas Malikussaleh (Unimal Emerald & Deep Forest Green) -->
+    <color name="primary_blue">#15803D</color>
+    <color name="primary_blue_dark">#052E16</color>
+    <color name="primary_blue_light">#DCFCE7</color>
 
-    <!-- Warna Sekunder / Aksen -->
-    <color name="secondary_teal">#0D9488</color>
-    <color name="secondary_teal_light">#F0FDFA</color>
+    <!-- Warna Sekunder / Aksen Emas Unimal -->
+    <color name="secondary_teal">#B45309</color>
+    <color name="secondary_teal_light">#FEF3C7</color>
+    <color name="unimal_gold">#FBBF24</color>
 
     <!-- Warna Latar, Kartu & Garis Tepi Halus -->
-    <color name="background_light">#F8FAFC</color>
+    <color name="background_light">#F6FAF7</color>
     <color name="surface_white">#FFFFFF</color>
-    <color name="border_subtle">#E2E8F0</color>
-    <color name="divider_gray">#E2E8F0</color>
+    <color name="border_subtle">#D1E3D8</color>
+    <color name="divider_gray">#E2ECE6</color>
 
     <!-- Warna Teks -->
-    <color name="text_primary">#0F172A</color>
-    <color name="text_secondary">#64748B</color>
-    <color name="text_muted">#94A3B8</color>
+    <color name="text_primary">#0F291A</color>
+    <color name="text_secondary">#4B6356</color>
+    <color name="text_muted">#849B8E</color>
     <color name="text_white">#FFFFFF</color>
 
     <!-- Warna Status Antrean -->
-    <color name="status_waiting">#D97706</color>
+    <color name="status_waiting">#B45309</color>
     <color name="status_waiting_bg">#FEF3C7</color>
-    <color name="status_called">#059669</color>
-    <color name="status_called_bg">#D1FAE5</color>
-    <color name="status_done">#2563EB</color>
-    <color name="status_done_bg">#DBEAFE</color>
+    <color name="status_called">#15803D</color>
+    <color name="status_called_bg">#DCFCE7</color>
+    <color name="status_done">#0369A1</color>
+    <color name="status_done_bg">#E0F2FE</color>
     <color name="status_cancelled">#475569</color>
     <color name="status_cancelled_bg">#F1F5F9</color>
 

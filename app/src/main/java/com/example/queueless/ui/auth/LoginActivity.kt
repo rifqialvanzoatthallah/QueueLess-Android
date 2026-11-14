@@ -11,6 +11,7 @@ import com.example.queueless.databinding.ActivityLoginBinding
 import com.example.queueless.model.User
 import com.example.queueless.ui.admin.AdminMainActivity
 import com.example.queueless.ui.mahasiswa.MahasiswaMainActivity
+import com.example.queueless.utils.applyStatusBarTopMargin
 import com.example.queueless.viewmodel.AuthViewModel
 import com.google.android.material.snackbar.Snackbar
 
@@ -23,6 +24,7 @@ class LoginActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        binding.ivLogo.applyStatusBarTopMargin(extraDp = 20)
 
         setupObservers()
         setupListeners()

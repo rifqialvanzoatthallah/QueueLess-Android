@@ -7,7 +7,7 @@
     <string name="register_title">Daftar Akun Mahasiswa</string>
     <string name="register_subtitle">Lengkapi data diri Anda untuk mengambil antrean</string>
     <string name="hint_nama">Nama Lengkap</string>
-    <string name="hint_nim">NIM (Nomor Induk Mahasiswa)</string>
+    <string name="hint_nim">NIM Mahasiswa</string>
     <string name="hint_email">Email Kampus</string>
     <string name="hint_password">Kata Sandi</string>
     <string name="hint_confirm_password">Konfirmasi Kata Sandi</string>
@@ -118,13 +118,32 @@
 
     <!-- Deskripsi Aksesibilitas Ikon -->
     <string name="cd_app_logo">Logo Aplikasi QueueLess</string>
+    <string name="cd_unimal_logo">Logo Universitas Malikussaleh</string>
     <string name="cd_delete_icon">Ikon Hapus Layanan</string>
     <string name="cd_empty_icon">Ilustrasi Data Kosong</string>
 
-    <!-- Tambahan Label UI Modern -->
-    <string name="app_badge_campus">CAMPUS SMART QUEUE</string>
+    <!-- Label UI Modern & Identitas Unimal -->
+    <string name="app_badge_campus">UNIVERSITAS MALIKUSSALEH</string>
+    <string name="unimal_campus_subtitle">Universitas Malikussaleh</string>
     <string name="login_card_heading">Masuk ke Akun Anda</string>
     <string name="login_card_caption">Gunakan akun mahasiswa atau petugas layanan akademik</string>
     <string name="register_card_heading">Informasi Mahasiswa</string>
     <string name="cd_back_button">Kembali ke Halaman Masuk</string>
+
+    <!-- Label Fase 6 (Admin) -->
+    <string name="role_admin_badge">ADMINISTRATOR LAYANAN</string>
+    <string name="label_today_history">Riwayat Antrean Selesai Hari Ini</string>
+    <string name="label_service_prefix_short">Kode %1$s</string>
+    <string name="label_student_queue_info">%1$s (%2$s)</string>
+    <string name="msg_finish_current_first">Selesaikan antrean %1$s yang sedang dilayani terlebih dahulu</string>
+    <string name="msg_no_serving_to_finish">Belum ada antrean yang sedang dipanggil</string>
+    <string name="cd_add_service">Tambah Layanan Baru</string>
+
+    <!-- Label Fase 7 (Mahasiswa) -->
+    <string name="role_mahasiswa_badge">MAHASISWA AKTIF</string>
+    <string name="label_nim_format">NIM: %1$s</string>
+    <string name="label_sisa_kuota_hari_ini">Sisa Kuota Hari Ini: %1$d dari %2$d antrean</string>
+    <string name="label_status_antrean_saya">Status: %1$s</string>
+    <string name="label_my_history_title">Riwayat Antrean Saya</string>
+    <string name="msg_service_closed">Maaf, layanan ini sedang tutup sementara.</string>
 </resources>
