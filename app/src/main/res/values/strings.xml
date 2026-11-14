@@ -1,3 +1,123 @@
 <resources>
     <string name="app_name">QueueLess</string>
+
+    <!-- Halaman Login & Register -->
+    <string name="login_title">Masuk ke QueueLess</string>
+    <string name="login_subtitle">Sistem Antrean Layanan Digital Kampus</string>
+    <string name="register_title">Daftar Akun Mahasiswa</string>
+    <string name="register_subtitle">Lengkapi data diri Anda untuk mengambil antrean</string>
+    <string name="hint_nama">Nama Lengkap</string>
+    <string name="hint_nim">NIM (Nomor Induk Mahasiswa)</string>
+    <string name="hint_email">Email Kampus</string>
+    <string name="hint_password">Kata Sandi</string>
+    <string name="hint_confirm_password">Konfirmasi Kata Sandi</string>
+    <string name="btn_login">Masuk</string>
+    <string name="btn_register">Daftar Sekarang</string>
+    <string name="btn_logout">Keluar dari Akun</string>
+    <string name="text_no_account">Belum punya akun mahasiswa? Daftar di sini</string>
+    <string name="text_has_account">Sudah punya akun? Masuk di sini</string>
+
+    <!-- Validasi Input & Error Handling -->
+    <string name="err_empty_field">Kolom ini wajib diisi</string>
+    <string name="err_invalid_email">Format email tidak valid</string>
+    <string name="err_password_short">Kata sandi minimal 6 karakter</string>
+    <string name="err_password_mismatch">Konfirmasi kata sandi tidak cocok</string>
+    <string name="err_login_failed">Login gagal: Periksa kembali email dan kata sandi Anda</string>
+    <string name="err_register_failed">Registrasi gagal: %1$s</string>
+    <string name="err_network">Koneksi internet terputus. Periksa jaringan Anda.</string>
+    <string name="err_user_data_not_found">Data profil pengguna tidak ditemukan di database.</string>
+    <string name="err_number_invalid">Masukkan angka lebih dari 0</string>
+    <string name="err_general">Terjadi kesalahan: %1$s</string>
+
+    <!-- Menu Navigasi Bawah -->
+    <string name="nav_admin_queue">Antrean Aktif</string>
+    <string name="nav_admin_service">Kelola Layanan</string>
+    <string name="nav_admin_history">Riwayat &amp; Akun</string>
+    <string name="nav_mhs_home">Layanan</string>
+    <string name="nav_mhs_queue">Antrean Saya</string>
+    <string name="nav_mhs_profile">Riwayat &amp; Profil</string>
+
+    <!-- Fitur Admin (CRUD Layanan & Manajemen Antrean) -->
+    <string name="title_admin_queue">Manajemen Antrean Hari Ini</string>
+    <string name="title_admin_service">Daftar Jenis Layanan</string>
+    <string name="title_admin_history">Riwayat Antrean &amp; Akun</string>
+    <string name="title_add_service">Tambah Layanan Baru</string>
+    <string name="title_edit_service">Edit Data Layanan</string>
+    <string name="search_service_hint">Cari nama layanan…</string>
+    <string name="hint_service_name">Nama Layanan</string>
+    <string name="hint_service_prefix">Kode Prefix (Contoh: A, B, C)</string>
+    <string name="hint_service_desc">Deskripsi &amp; Persyaratan Berkas</string>
+    <string name="hint_service_estimasi">Estimasi Waktu per Orang (Menit)</string>
+    <string name="hint_service_quota">Kuota Antrean Harian</string>
+    <string name="label_service_active">Status Layanan Aktif (Buka)</string>
+    <string name="label_service_inactive">Tutup</string>
+    <string name="btn_save_service">Simpan Layanan</string>
+    <string name="btn_call_next">Panggil Berikutnya</string>
+    <string name="btn_finish_queue">Selesai Layani</string>
+    <string name="label_currently_serving">Sedang Dilayani Sekarang</string>
+    <string name="label_no_serving">Belum ada antrean dipanggil</string>
+    <string name="label_waiting_list">Daftar Antrean Menunggu</string>
+    <string name="dialog_delete_title">Hapus Layanan</string>
+    <string name="dialog_delete_msg">Yakin ingin menghapus layanan \"%1$s\"? Tindakan ini tidak dapat dibatalkan.</string>
+    <string name="btn_yes_delete">Ya, Hapus</string>
+    <string name="btn_cancel">Batal</string>
+    <string name="msg_service_saved">Data layanan berhasil disimpan</string>
+    <string name="msg_service_deleted">Layanan berhasil dihapus</string>
+    <string name="msg_no_waiting_queue">Tidak ada antrean yang sedang menunggu</string>
+    <string name="msg_queue_called">Memanggil nomor antrean %1$s</string>
+    <string name="msg_queue_finished">Antrean %1$s telah selesai dilayani</string>
+
+    <!-- Fitur Mahasiswa (Layanan, Detail, Antrean Saya & Profil) -->
+    <string name="title_mhs_home">Pilih Layanan Kampus</string>
+    <string name="title_detail_service">Detail Informasi Layanan</string>
+    <string name="title_my_queue">Status Antrean Saya</string>
+    <string name="title_mhs_history">Riwayat Antrean &amp; Profil</string>
+    <string name="label_prefix_code">Kode Layanan: %1$s</string>
+    <string name="label_estimasi_format">Estimasi ±%1$d menit / orang</string>
+    <string name="label_kuota_format">Kuota Harian: %1$d antrean</string>
+    <string name="label_syarat_berkas">Persyaratan Berkas:</string>
+    <string name="btn_take_queue">Ambil Nomor Antrean</string>
+    <string name="btn_cancel_queue">Batalkan Antrean</string>
+    <string name="label_your_queue_num">Nomor Antrean Anda</string>
+    <string name="label_now_serving_num">Sedang Dilayani</string>
+    <string name="label_queues_ahead">Sisa Antrean di Depan: %1$d orang</string>
+    <string name="label_est_wait">Perkiraan Waktu Tunggu: ±%1$d menit</string>
+    <string name="label_your_turn">Giliran Anda! Silakan menuju loket pelayanan.</string>
+    <string name="dialog_cancel_queue_title">Batalkan Antrean</string>
+    <string name="dialog_cancel_queue_msg">Apakah Anda yakin ingin membatalkan nomor antrean %1$s?</string>
+    <string name="btn_yes_cancel">Ya, Batalkan</string>
+    <string name="msg_active_queue_exists">Anda masih memiliki antrean aktif hari ini.</string>
+    <string name="msg_quota_full">Maaf, kuota antrean untuk layanan ini hari ini sudah penuh.</string>
+    <string name="msg_queue_taken">Berhasil mengambil nomor antrean %1$s</string>
+    <string name="msg_queue_cancelled">Antrean berhasil dibatalkan</string>
+    <string name="dialog_logout_title">Konfirmasi Keluar</string>
+    <string name="dialog_logout_msg">Apakah Anda yakin ingin keluar dari akun ini?</string>
+    <string name="btn_yes_logout">Keluar</string>
+
+    <!-- Status Antrean -->
+    <string name="status_waiting">Menunggu</string>
+    <string name="status_called">Dipanggil</string>
+    <string name="status_done">Selesai</string>
+    <string name="status_cancelled">Dibatalkan</string>
+
+    <!-- Loading & Empty State -->
+    <string name="loading_data">Memuat data…</string>
+    <string name="empty_service">Belum ada data layanan tersedia</string>
+    <string name="empty_search_service">Layanan tidak ditemukan</string>
+    <string name="empty_queue">Belum ada antrean aktif hari ini</string>
+    <string name="empty_my_queue">Anda belum mengambil nomor antrean hari ini</string>
+    <string name="empty_history">Belum ada riwayat antrean</string>
+
+    <!-- Notifikasi Real-Time & Runtime Permission -->
+    <string name="notif_channel_id">queueless_channel</string>
+    <string name="notif_channel_name">Panggilan Antrean QueueLess</string>
+    <string name="notif_channel_desc">Notifikasi real-time saat nomor antrean Anda dipanggil</string>
+    <string name="notif_called_title">Giliran Anda Tiba!</string>
+    <string name="notif_called_body">Nomor %1$s (%2$s) silakan segera menuju loket pelayanan.</string>
+    <string name="msg_notif_permission_denied">Izin notifikasi ditolak. Anda tetap dapat memantau antrean langsung di layar.</string>
+
+    <!-- Deskripsi Aksesibilitas Ikon -->
+    <string name="cd_app_logo">Logo Aplikasi QueueLess</string>
+    <string name="cd_delete_icon">Ikon Hapus Layanan</string>
+    <string name="cd_empty_icon">Ilustrasi Data Kosong</string>
 </resources>
