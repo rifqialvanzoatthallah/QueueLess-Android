@@ -120,4 +120,11 @@
     <string name="cd_app_logo">Logo Aplikasi QueueLess</string>
     <string name="cd_delete_icon">Ikon Hapus Layanan</string>
     <string name="cd_empty_icon">Ilustrasi Data Kosong</string>
+
+    <!-- Tambahan Label UI Modern -->
+    <string name="app_badge_campus">CAMPUS SMART QUEUE</string>
+    <string name="login_card_heading">Masuk ke Akun Anda</string>
+    <string name="login_card_caption">Gunakan akun mahasiswa atau petugas layanan akademik</string>
+    <string name="register_card_heading">Informasi Mahasiswa</string>
+    <string name="cd_back_button">Kembali ke Halaman Masuk</string>
 </resources>

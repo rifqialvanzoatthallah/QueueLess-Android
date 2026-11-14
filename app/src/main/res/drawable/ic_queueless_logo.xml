@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="64dp"
+    android:height="64dp"
+    android:viewportWidth="64"
+    android:viewportHeight="64">
+    <!-- Latar belakang badge membulat -->
+    <path
+        android:fillColor="#2563EB"
+        android:pathData="M18,4L46,4A14,14 0,0 1,60 18L60,46A14,14 0,0 1,46 60L18,60A14,14 0,0 1,4 46L4,18A14,14 0,0 1,18 4z" />
+    <!-- Aksentuasi lapisan kartu antrean belakang -->
+    <path
+        android:fillColor="#60A5FA"
+        android:pathData="M22,16L42,16A4,4 0,0 1,46 20L46,23L18,23L18,20A4,4 0,0 1,22 16z" />
+    <!-- Tiket antrean utama -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M18,25L46,25A4,4 0,0 1,50 29L50,44A4,4 0,0 1,46 48L18,48A4,4 0,0 1,14 44L14,29A4,4 0,0 1,18 25z" />
+    <!-- Garis simbol urutan & centang -->
+    <path
+        android:fillColor="#2563EB"
+        android:pathData="M21,32h14v3H21zM21,38h9v3H21z" />
+    <path
+        android:fillColor="#10B981"
+        android:pathData="M39,34m-4,0a4,4 0,1 1,8 0a4,4 0,1 1,-8 0" />
+</vector>
