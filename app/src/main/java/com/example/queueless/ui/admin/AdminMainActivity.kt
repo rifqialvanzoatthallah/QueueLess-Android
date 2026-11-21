@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.example.queueless.R
 import com.example.queueless.databinding.ActivityAdminMainBinding
+import com.example.queueless.utils.VoiceAnnouncer
 import com.example.queueless.utils.applyStatusBarTopPadding
 import com.example.queueless.viewmodel.AdminViewModel
 import com.google.android.material.snackbar.Snackbar
@@ -14,12 +15,15 @@ class AdminMainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityAdminMainBinding
     private val viewModel: AdminViewModel by viewModels()
+    private lateinit var voiceAnnouncer: VoiceAnnouncer
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityAdminMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         binding.headerAdmin.applyStatusBarTopPadding()
+
+        voiceAnnouncer = VoiceAnnouncer(this)
 
         setupBottomNav()
         observeGlobalToasts()
@@ -67,11 +71,22 @@ class AdminMainActivity : AppCompatActivity() {
                 "FINISH_CURRENT_FIRST" -> getString(R.string.msg_finish_current_first, param.orEmpty())
                 "NO_WAITING_QUEUE" -> getString(R.string.msg_no_waiting_queue)
                 "NO_SERVING_TO_FINISH" -> getString(R.string.msg_no_serving_to_finish)
-                "QUEUE_CALLED" -> getString(R.string.msg_queue_called, param.orEmpty())
+                "QUEUE_CALLED" -> {
+                    val nomorAntrean = param.orEmpty()
+                    voiceAnnouncer.announceQueue(nomorAntrean)
+                    getString(R.string.msg_queue_called, nomorAntrean)
+                }
                 "QUEUE_FINISHED" -> getString(R.string.msg_queue_finished, param.orEmpty())
                 else -> getString(R.string.err_general, param.orEmpty())
             }
             Snackbar.make(binding.root, message, Snackbar.LENGTH_SHORT).show()
         }
+    }
+
+    override fun onDestroy() {
+        if (::voiceAnnouncer.isInitialized) {
+            voiceAnnouncer.shutdown()
+        }
+        super.onDestroy()
     }
 }

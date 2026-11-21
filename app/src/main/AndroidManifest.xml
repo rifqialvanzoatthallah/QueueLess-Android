@@ -5,6 +5,12 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
 
+    <queries>
+        <intent>
+            <action android:name="android.intent.action.TTS_SERVICE" />
+        </intent>
+    </queries>
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -44,11 +50,6 @@
             android:name=".ui.admin.FormServiceActivity"
             android:exported="false"
             android:windowSoftInputMode="adjustResize" />
-        <activity
-            android:name=".ui.mahasiswa.DetailServiceActivity"
-            android:exported="false"
-            android:windowSoftInputMode="adjustResize" />
-
         <activity
             android:name=".ui.mahasiswa.DetailServiceActivity"
             android:exported="false"
