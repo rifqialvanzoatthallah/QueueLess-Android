@@ -146,4 +146,8 @@
     <string name="label_status_antrean_saya">Status: %1$s</string>
     <string name="label_my_history_title">Riwayat Antrean Saya</string>
     <string name="msg_service_closed">Maaf, layanan ini sedang tutup sementara.</string>
+
+    <!-- Label Tiket QR Code -->
+    <string name="cd_qr_ticket">Kode QR Tiket Antrean</string>
+    <string name="label_qr_hint">Tunjukkan kode QR ini ke petugas loket saat giliran dipanggil</string>
 </resources>

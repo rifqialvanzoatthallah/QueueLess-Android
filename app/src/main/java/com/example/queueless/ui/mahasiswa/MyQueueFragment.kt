@@ -11,6 +11,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import com.example.queueless.R
 import com.example.queueless.databinding.FragmentMyQueueBinding
+import com.example.queueless.utils.QrCodeHelper
 import com.example.queueless.viewmodel.MahasiswaViewModel
 
 class MyQueueFragment : Fragment() {
@@ -46,6 +47,11 @@ class MyQueueFragment : Fragment() {
                 binding.tvMyQueueNumber.text = queue.nomorAntrean
                 binding.tvMyQueueStatus.text =
                     getString(R.string.label_status_antrean_saya, queue.status)
+
+                val qrPayload =
+                    "QUEUELESS|${queue.id}|${queue.nomorAntrean}|${queue.nimMahasiswa}|${queue.tanggal}"
+                val qrBitmap = QrCodeHelper.generateQrCode(qrPayload, 512)
+                binding.ivMyQueueQrCode.setImageBitmap(qrBitmap)
 
                 val ctx = requireContext()
                 if (queue.status == "Dipanggil") {

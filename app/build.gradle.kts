@@ -55,6 +55,9 @@ dependencies {
     implementation("com.google.firebase:firebase-firestore")
     implementation("com.google.firebase:firebase-messaging")
 
+    // QR Code Generator (ZXing Core)
+    implementation("com.google.zxing:core:3.5.3")
+
     // Testing bawaan
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.espresso.core)
