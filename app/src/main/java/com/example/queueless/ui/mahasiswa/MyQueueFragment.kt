@@ -50,6 +50,7 @@ class MyQueueFragment : Fragment() {
                 val ctx = requireContext()
                 if (queue.status == "Dipanggil") {
                     binding.cardYourTurnBanner.visibility = View.VISIBLE
+                    binding.btnCancelMyQueue.visibility = View.GONE
                     binding.tvMyQueueStatus.setTextColor(
                         ContextCompat.getColor(ctx, R.color.status_called)
                     )
@@ -57,6 +58,7 @@ class MyQueueFragment : Fragment() {
                         ColorStateList.valueOf(ContextCompat.getColor(ctx, R.color.status_called_bg))
                 } else {
                     binding.cardYourTurnBanner.visibility = View.GONE
+                    binding.btnCancelMyQueue.visibility = View.VISIBLE
                     binding.tvMyQueueStatus.setTextColor(
                         ContextCompat.getColor(ctx, R.color.status_waiting)
                     )
