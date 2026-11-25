@@ -150,4 +150,17 @@
     <!-- Label Tiket QR Code -->
     <string name="cd_qr_ticket">Kode QR Tiket Antrean</string>
     <string name="label_qr_hint">Tunjukkan kode QR ini ke petugas loket saat giliran dipanggil</string>
+
+    <!-- Label Peningkatan Visual, Avatar & Hero Banner -->
+    <string name="cd_profile_avatar">Foto Profil Pengguna</string>
+    <string name="cd_change_avatar">Ganti Foto Profil</string>
+    <string name="cd_campus_illustration">Ilustrasi Gedung Kampus</string>
+    <string name="msg_avatar_updated">Foto profil berhasil diperbarui</string>
+    <string name="msg_avatar_failed">Gagal memuat foto dari galeri</string>
+    <string name="greeting_hello_user">Halo, %1\$s!</string>
+    <string name="greeting_hello_default">Selamat Datang!</string>
+    <string name="banner_mhs_subtitle">Ambil nomor antrean layanan akademik tanpa antre lama di loket.</string>
+    <string name="banner_admin_subtitle">Kelola dan panggil antrean layanan akademik hari ini secara real-time.</string>
+    <string name="badge_active_services_count">%1\$d Layanan Tersedia</string>
+    <string name="badge_waiting_queues_count">%1\$d Antrean Menunggu</string>
 </resources>

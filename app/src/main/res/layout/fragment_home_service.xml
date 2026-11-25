@@ -7,6 +7,68 @@
     android:orientation="vertical"
     android:padding="16dp">
 
+    <!-- Hero Banner Sapaan & Statistik Layanan -->
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="14dp"
+        android:background="@drawable/bg_hero_banner">
+
+        <ImageView
+            android:layout_width="104dp"
+            android:layout_height="104dp"
+            android:layout_gravity="bottom|end"
+            android:layout_marginEnd="6dp"
+            android:contentDescription="@string/cd_campus_illustration"
+            android:src="@drawable/ic_campus_building" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="18dp">
+
+            <TextView
+                android:id="@+id/tvMhsBannerDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/unimal_gold"
+                android:textSize="11sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvMhsGreeting"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="@string/greeting_hello_default"
+                android:textColor="@color/text_white"
+                android:textSize="19sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:layout_marginEnd="64dp"
+                android:text="@string/banner_mhs_subtitle"
+                android:textColor="#D1FAE5"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/tvMhsServiceCountBadge"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:background="@drawable/bg_pill_badge"
+                android:paddingHorizontal="12dp"
+                android:paddingVertical="4dp"
+                android:textColor="@color/unimal_gold"
+                android:textSize="11sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+    </FrameLayout>
+
     <com.google.android.material.card.MaterialCardView
         style="@style/Widget.QueueLess.Card"
         android:layout_width="match_parent"
@@ -41,8 +103,8 @@
         android:visibility="gone">
 
         <ImageView
-            android:layout_width="64dp"
-            android:layout_height="64dp"
+            android:layout_width="116dp"
+            android:layout_height="116dp"
             android:contentDescription="@string/cd_empty_icon"
             android:src="@drawable/ic_empty_box" />
 
@@ -50,7 +112,7 @@
             android:id="@+id/tvEmptyMhsServiceMsg"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="10dp"
             android:text="@string/empty_service"
             android:textColor="@color/text_secondary"
             android:textSize="14sp" />

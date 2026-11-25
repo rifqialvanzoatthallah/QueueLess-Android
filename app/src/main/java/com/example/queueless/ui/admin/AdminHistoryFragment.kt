@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
@@ -13,7 +14,10 @@ import com.example.queueless.R
 import com.example.queueless.adapter.QueueAdapter
 import com.example.queueless.databinding.FragmentAdminHistoryBinding
 import com.example.queueless.ui.auth.LoginActivity
+import com.example.queueless.utils.ProfilePhotoHelper
 import com.example.queueless.viewmodel.AdminViewModel
+import com.google.android.material.shape.ShapeAppearanceModel
+import com.google.android.material.snackbar.Snackbar
 
 class AdminHistoryFragment : Fragment() {
 
@@ -21,6 +25,19 @@ class AdminHistoryFragment : Fragment() {
     private val binding get() = _binding!!
     private val viewModel: AdminViewModel by activityViewModels()
     private lateinit var historyAdapter: QueueAdapter
+
+    private val pickAvatarLauncher = registerForActivityResult(
+        ActivityResultContracts.GetContent()
+    ) { uri ->
+        uri ?: return@registerForActivityResult
+        val ctx = requireContext()
+        if (ProfilePhotoHelper.saveAvatarFromUri(ctx, uri)) {
+            ProfilePhotoHelper.loadAvatarInto(ctx, binding.ivAdminAvatar)
+            Snackbar.make(binding.root, getString(R.string.msg_avatar_updated), Snackbar.LENGTH_SHORT).show()
+        } else {
+            Snackbar.make(binding.root, getString(R.string.msg_avatar_failed), Snackbar.LENGTH_SHORT).show()
+        }
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
@@ -32,6 +49,14 @@ class AdminHistoryFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        binding.ivAdminAvatar.shapeAppearanceModel = ShapeAppearanceModel.builder()
+            .setAllCornerSizes(ShapeAppearanceModel.PILL)
+            .build()
+        ProfilePhotoHelper.loadAvatarInto(requireContext(), binding.ivAdminAvatar)
+        binding.frameAdminAvatar.setOnClickListener {
+            pickAvatarLauncher.launch("image/*")
+        }
+
         historyAdapter = QueueAdapter()
         binding.rvAdminHistory.layoutManager = LinearLayoutManager(requireContext())
         binding.rvAdminHistory.adapter = historyAdapter
@@ -39,6 +64,11 @@ class AdminHistoryFragment : Fragment() {
         binding.btnAdminLogout.setOnClickListener { confirmLogout() }
 
         observeViewModel()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        ProfilePhotoHelper.loadAvatarInto(requireContext(), binding.ivAdminAvatar)
     }
 
     private fun observeViewModel() {

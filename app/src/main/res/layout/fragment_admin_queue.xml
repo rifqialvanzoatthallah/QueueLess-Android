@@ -7,6 +7,69 @@
     android:orientation="vertical"
     android:padding="16dp">
 
+    <!-- Hero Banner Sapaan & Statistik Antrean Admin -->
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="12dp"
+        android:background="@drawable/bg_hero_banner">
+
+        <ImageView
+            android:layout_width="96dp"
+            android:layout_height="96dp"
+            android:layout_gravity="bottom|end"
+            android:layout_marginEnd="6dp"
+            android:contentDescription="@string/cd_campus_illustration"
+            android:src="@drawable/ic_campus_building" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <TextView
+                android:id="@+id/tvAdminBannerDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/unimal_gold"
+                android:textSize="11sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvAdminGreeting"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="@string/greeting_hello_default"
+                android:textColor="@color/text_white"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="3dp"
+                android:layout_marginEnd="60dp"
+                android:text="@string/banner_admin_subtitle"
+                android:textColor="#D1FAE5"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/tvAdminWaitingCountBadge"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/bg_pill_badge"
+                android:paddingHorizontal="12dp"
+                android:paddingVertical="4dp"
+                android:textColor="@color/unimal_gold"
+                android:textSize="11sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+    </FrameLayout>
+
+    <!-- Kartu Kontrol Antrean Sedang Dilayani -->
     <com.google.android.material.card.MaterialCardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -18,7 +81,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:padding="20dp">
+            android:padding="18dp">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -51,13 +114,13 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="18dp"
+                android:layout_marginTop="16dp"
                 android:orientation="horizontal">
 
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/btnCallNext"
                     android:layout_width="0dp"
-                    android:layout_height="50dp"
+                    android:layout_height="48dp"
                     android:layout_marginEnd="6dp"
                     android:layout_weight="1"
                     android:ellipsize="end"
@@ -75,7 +138,7 @@
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/btnFinishQueue"
                     android:layout_width="0dp"
-                    android:layout_height="50dp"
+                    android:layout_height="48dp"
                     android:layout_marginStart="6dp"
                     android:layout_weight="1"
                     android:ellipsize="end"
@@ -96,8 +159,8 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="18dp"
-        android:layout_marginBottom="10dp"
+        android:layout_marginTop="14dp"
+        android:layout_marginBottom="8dp"
         android:text="@string/label_waiting_list"
         android:textColor="@color/text_primary"
         android:textSize="16sp"
@@ -121,15 +184,15 @@
         android:visibility="gone">
 
         <ImageView
-            android:layout_width="64dp"
-            android:layout_height="64dp"
+            android:layout_width="116dp"
+            android:layout_height="116dp"
             android:contentDescription="@string/cd_empty_icon"
             android:src="@drawable/ic_empty_box" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="10dp"
             android:text="@string/empty_queue"
             android:textColor="@color/text_secondary"
             android:textSize="14sp" />

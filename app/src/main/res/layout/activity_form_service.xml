@@ -6,7 +6,6 @@
     android:background="@color/background_light"
     android:orientation="vertical">
 
-    <!-- Header Hijau Unimal -->
     <LinearLayout
         android:id="@+id/headerForm"
         android:layout_width="match_parent"
@@ -139,7 +138,9 @@
                     android:checked="true"
                     android:text="@string/label_service_active"
                     android:textColor="@color/text_primary"
-                    android:textSize="14sp" />
+                    android:textSize="14sp"
+                    app:thumbTint="@color/switch_thumb_tint"
+                    app:trackTint="@color/switch_track_tint" />
 
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/btnSaveService"

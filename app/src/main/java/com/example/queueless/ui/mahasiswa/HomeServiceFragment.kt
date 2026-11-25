@@ -16,6 +16,9 @@ import com.example.queueless.adapter.ServiceAdapter
 import com.example.queueless.databinding.FragmentHomeServiceBinding
 import com.example.queueless.model.Service
 import com.example.queueless.viewmodel.MahasiswaViewModel
+import java.text.SimpleDateFormat
+import java.util.Date
+import java.util.Locale
 
 class HomeServiceFragment : Fragment() {
 
@@ -42,6 +45,9 @@ class HomeServiceFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        val dateFormat = SimpleDateFormat("EEEE, dd MMMM yyyy", Locale.forLanguageTag("id-ID"))
+        binding.tvMhsBannerDate.text = dateFormat.format(Date())
 
         serviceAdapter = ServiceAdapter(
             isAdmin = false,
@@ -74,12 +80,24 @@ class HomeServiceFragment : Fragment() {
     }
 
     private fun observeViewModel() {
+        viewModel.studentProfile.observe(viewLifecycleOwner) { user ->
+            val firstName = user?.nama?.trim()?.substringBefore(" ").orEmpty()
+            binding.tvMhsGreeting.text = if (firstName.isNotEmpty()) {
+                getString(R.string.greeting_hello_user, firstName)
+            } else {
+                getString(R.string.greeting_hello_default)
+            }
+        }
+
         viewModel.isLoading.observe(viewLifecycleOwner) { loading ->
             binding.progressBarMhsService.visibility = if (loading) View.VISIBLE else View.GONE
         }
 
         viewModel.filteredActiveServices.observe(viewLifecycleOwner) { list ->
             serviceAdapter.submitList(list)
+            binding.tvMhsServiceCountBadge.text =
+                getString(R.string.badge_active_services_count, list.size)
+
             val isEmpty = list.isEmpty()
             binding.layoutEmptyMhsService.visibility = if (isEmpty) View.VISIBLE else View.GONE
             binding.rvMhsServices.visibility = if (isEmpty) View.GONE else View.VISIBLE
