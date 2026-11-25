@@ -163,4 +163,79 @@
     <string name="banner_admin_subtitle">Kelola dan panggil antrean layanan akademik hari ini secara real-time.</string>
     <string name="badge_active_services_count">%1\$d Layanan Tersedia</string>
     <string name="badge_waiting_queues_count">%1\$d Antrean Menunggu</string>
+
+    <!-- Label Menu Pengaturan (Admin & Mahasiswa) -->
+    <string name="btn_open_settings">Pengaturan Aplikasi</string>
+    <string name="title_mhs_settings">Pengaturan Akun &amp; Notifikasi</string>
+    <string name="title_admin_settings">Pengaturan Loket &amp; Panggilan Suara</string>
+    <string name="section_profile_photo">Foto Profil</string>
+    <string name="btn_choose_gallery_photo">Pilih Foto dari Galeri</string>
+    <string name="btn_remove_profile_photo">Hapus Foto Profil</string>
+    <string name="msg_avatar_removed">Foto profil dikembalikan ke bawaan</string>
+    <string name="section_notif_pref">Preferensi Notifikasi Antrean</string>
+    <string name="label_switch_vibrate">Getaran Saat Nomor Dipanggil</string>
+    <string name="label_switch_sound">Suara Notifikasi Panggilan</string>
+    <string name="btn_system_notif_settings">Izin Notifikasi Sistem Android</string>
+    <string name="section_about_app">Informasi Aplikasi</string>
+    <string name="btn_about_app">Tentang QueueLess (v1.0)</string>
+    <string name="about_app_title">Tentang QueueLess</string>
+    <string name="about_app_message">QueueLess v1.0\nSistem Antrean Layanan Digital Kampus\nUniversitas Malikussaleh\n\nAplikasi antrean real-time dengan tiket QR Code dinamis, notifikasi panggilan langsung, dan pengumuman suara otomatis.</string>
+    <string name="btn_close">Tutup</string>
+    <string name="label_switch_admin_tts">Panggilan Suara Otomatis (TTS)</string>
+    <string name="hint_admin_counter_name">Nama / Nomor Loket (Contoh: Loket 1 Akademik)</string>
+    <string name="label_tts_speed">Kecepatan Pelafalan Suara</string>
+    <string name="speed_slow">Lambat</string>
+    <string name="speed_normal">Normal</string>
+    <string name="speed_fast">Cepat</string>
+    <string name="btn_test_tts">Uji Coba Suara Loket</string>
+    <string name="btn_save_settings">Simpan Pengaturan</string>
+    <string name="msg_settings_saved">Pengaturan berhasil disimpan</string>
+
+    <!-- Label Tab Pengaturan & Panduan Cara Penggunaan -->
+    <string name="nav_settings">Pengaturan</string>
+    <string name="title_settings">Pengaturan &amp; Akun</string>
+    <string name="section_settings_menu">Menu Pengaturan &amp; Riwayat</string>
+
+    <string name="menu_queue_history">Riwayat Antrean</string>
+    <string name="menu_queue_history_desc_admin">Lihat daftar antrean yang selesai dilayani hari ini</string>
+    <string name="menu_queue_history_desc_mhs">Lihat riwayat pengambilan nomor antrean Anda</string>
+    <string name="badge_history_count">%1$d riwayat</string>
+
+    <string name="menu_admin_tts_settings">Pengaturan Loket &amp; Suara</string>
+    <string name="menu_admin_tts_settings_desc">Atur panggilan suara (TTS), nomor loket, &amp; kecepatan</string>
+
+    <string name="menu_mhs_notif_settings">Preferensi Notifikasi &amp; Profil</string>
+    <string name="menu_mhs_notif_settings_desc">Atur foto profil, getaran panggilan, &amp; izin sistem</string>
+
+    <string name="menu_app_guide">Cara Penggunaan Aplikasi</string>
+    <string name="menu_app_guide_desc">Panduan langkah demi langkah menggunakan QueueLess</string>
+
+    <string name="menu_about_app">Tentang Aplikasi</string>
+    <string name="menu_about_app_desc">Informasi versi v1.0 &amp; sistem layanan kampus</string>
+
+    <!-- Panduan Mahasiswa -->
+    <string name="guide_mhs_title">Cara Penggunaan (Mahasiswa)</string>
+    <string name="guide_mhs_subtitle">Ikuti 4 langkah mudah berikut untuk mengambil dan memantau antrean layanan kampus:</string>
+    <string name="guide_mhs_step1_title">1. Pilih Layanan Kampus</string>
+    <string name="guide_mhs_step1_desc">Buka tab Layanan, gunakan kolom pencarian jika perlu, lalu ketuk layanan akademik yang dituju untuk melihat syarat berkas.</string>
+    <string name="guide_mhs_step2_title">2. Ambil Nomor Antrean</string>
+    <string name="guide_mhs_step2_desc">Pastikan kuota harian masih tersedia dan persyaratan berkas sudah lengkap, lalu tekan tombol Ambil Nomor Antrean.</string>
+    <string name="guide_mhs_step3_title">3. Pantau Status &amp; Tiket QR Code</string>
+    <string name="guide_mhs_step3_desc">Buka tab Antrean Saya untuk melihat sisa antrean di depan, estimasi waktu tunggu, dan kode QR tiket Anda.</string>
+    <string name="guide_mhs_step4_title">4. Menuju Loket Saat Dipanggil</string>
+    <string name="guide_mhs_step4_desc">Saat notifikasi panggilan muncul, segera menuju loket pelayanan dan tunjukkan kode QR pada layar kepada petugas.</string>
+
+    <!-- Panduan Admin -->
+    <string name="guide_admin_title">Cara Penggunaan (Petugas Loket)</string>
+    <string name="guide_admin_subtitle">Panduan pengelolaan layanan dan pemanggilan antrean harian untuk Administrator:</string>
+    <string name="guide_admin_step1_title">1. Kelola Jenis Layanan</string>
+    <string name="guide_admin_step1_desc">Buka tab Kelola Layanan untuk menambah, mengubah, menutup sementara, atau menghapus layanan akademik beserta kuota hariannya.</string>
+    <string name="guide_admin_step2_title">2. Panggil Antrean Berikutnya</string>
+    <string name="guide_admin_step2_desc">Pada tab Antrean Aktif, tekan Panggil Berikutnya. Sistem otomatis mengumumkan nomor antrean lewat suara (TTS) dan mengirim notifikasi ke mahasiswa.</string>
+    <string name="guide_admin_step3_title">3. Selesaikan Layanan Loket</string>
+    <string name="guide_admin_step3_desc">Setelah berkas mahasiswa selesai diproses di loket, tekan tombol Selesai Layani agar antrean masuk ke riwayat dan siap memanggil nomor berikutnya.</string>
+    <string name="guide_admin_step4_title">4. Atur Nomor Loket &amp; Suara</string>
+    <string name="guide_admin_step4_desc">Gunakan menu Pengaturan Loket &amp; Suara untuk menyesuaikan nama loket tujuan dan kecepatan pelafalan suara pengumuman.</string>
+
+    <string name="btn_understand">Mengerti</string>
 </resources>

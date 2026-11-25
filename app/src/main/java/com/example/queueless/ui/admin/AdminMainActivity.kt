@@ -33,6 +33,12 @@ class AdminMainActivity : AppCompatActivity() {
         }
     }
 
+    fun testVoiceAnnouncement(counterName: String, speechRate: Float) {
+        if (::voiceAnnouncer.isInitialized) {
+            voiceAnnouncer.testAnnouncement(counterName, speechRate)
+        }
+    }
+
     private fun setupBottomNav() {
         binding.bottomNavAdmin.setOnItemSelectedListener { item ->
             when (item.itemId) {
@@ -45,7 +51,7 @@ class AdminMainActivity : AppCompatActivity() {
                     true
                 }
                 R.id.nav_admin_history -> {
-                    loadFragment(AdminHistoryFragment(), getString(R.string.title_admin_history))
+                    loadFragment(AdminHistoryFragment(), getString(R.string.title_settings))
                     true
                 }
                 else -> false

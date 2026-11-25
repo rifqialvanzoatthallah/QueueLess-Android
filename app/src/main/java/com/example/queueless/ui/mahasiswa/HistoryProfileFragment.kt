@@ -1,7 +1,10 @@
 package com.example.queueless.ui.mahasiswa
 
 import android.content.Intent
+import android.net.Uri
+import android.os.Build
 import android.os.Bundle
+import android.provider.Settings
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,10 +15,15 @@ import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.queueless.R
 import com.example.queueless.adapter.QueueAdapter
+import com.example.queueless.databinding.DialogAppGuideBinding
+import com.example.queueless.databinding.DialogHistorySheetBinding
+import com.example.queueless.databinding.DialogMhsSettingsBinding
 import com.example.queueless.databinding.FragmentHistoryProfileBinding
 import com.example.queueless.ui.auth.LoginActivity
 import com.example.queueless.utils.ProfilePhotoHelper
+import com.example.queueless.utils.SettingsHelper
 import com.example.queueless.viewmodel.MahasiswaViewModel
+import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.shape.ShapeAppearanceModel
 import com.google.android.material.snackbar.Snackbar
 
@@ -24,7 +32,6 @@ class HistoryProfileFragment : Fragment() {
     private var _binding: FragmentHistoryProfileBinding? = null
     private val binding get() = _binding!!
     private val viewModel: MahasiswaViewModel by activityViewModels()
-    private lateinit var historyAdapter: QueueAdapter
 
     private val pickAvatarLauncher = registerForActivityResult(
         ActivityResultContracts.GetContent()
@@ -57,11 +64,12 @@ class HistoryProfileFragment : Fragment() {
             pickAvatarLauncher.launch("image/*")
         }
 
-        historyAdapter = QueueAdapter()
-        binding.rvMhsHistory.layoutManager = LinearLayoutManager(requireContext())
-        binding.rvMhsHistory.adapter = historyAdapter
-
+        binding.rowMhsHistory.setOnClickListener { showMhsHistorySheet() }
+        binding.rowMhsNotifSettings.setOnClickListener { showMhsSettingsSheet() }
+        binding.rowMhsGuide.setOnClickListener { showMhsGuideSheet() }
+        binding.rowMhsAbout.setOnClickListener { showAboutDialog() }
         binding.btnMhsLogout.setOnClickListener { confirmLogout() }
+
         observeViewModel()
     }
 
@@ -80,10 +88,119 @@ class HistoryProfileFragment : Fragment() {
         }
 
         viewModel.historyQueues.observe(viewLifecycleOwner) { list ->
-            historyAdapter.submitList(list)
-            binding.layoutEmptyMhsHistory.visibility = if (list.isEmpty()) View.VISIBLE else View.GONE
-            binding.rvMhsHistory.visibility = if (list.isEmpty()) View.GONE else View.VISIBLE
+            binding.tvMhsHistoryCountPill.text =
+                getString(R.string.badge_history_count, list.size)
         }
+    }
+
+    private fun showMhsHistorySheet() {
+        val ctx = requireContext()
+        val sheetDialog = BottomSheetDialog(ctx)
+        val sheetBinding = DialogHistorySheetBinding.inflate(layoutInflater)
+        sheetDialog.setContentView(sheetBinding.root)
+
+        val historyList = viewModel.historyQueues.value.orEmpty()
+        sheetBinding.tvHistorySheetTitle.text = getString(R.string.label_my_history_title)
+        sheetBinding.tvHistorySheetBadge.text =
+            getString(R.string.badge_history_count, historyList.size)
+
+        val adapter = QueueAdapter()
+        sheetBinding.rvHistorySheet.layoutManager = LinearLayoutManager(ctx)
+        sheetBinding.rvHistorySheet.adapter = adapter
+        adapter.submitList(historyList)
+
+        sheetBinding.layoutEmptyHistorySheet.visibility =
+            if (historyList.isEmpty()) View.VISIBLE else View.GONE
+        sheetBinding.rvHistorySheet.visibility =
+            if (historyList.isEmpty()) View.GONE else View.VISIBLE
+
+        sheetDialog.show()
+    }
+
+    private fun showMhsGuideSheet() {
+        val ctx = requireContext()
+        val sheetDialog = BottomSheetDialog(ctx)
+        val guideBinding = DialogAppGuideBinding.inflate(layoutInflater)
+        sheetDialog.setContentView(guideBinding.root)
+
+        guideBinding.tvGuideTitle.text = getString(R.string.guide_mhs_title)
+        guideBinding.tvGuideSubtitle.text = getString(R.string.guide_mhs_subtitle)
+        guideBinding.tvGuideStep1Title.text = getString(R.string.guide_mhs_step1_title)
+        guideBinding.tvGuideStep1Desc.text = getString(R.string.guide_mhs_step1_desc)
+        guideBinding.tvGuideStep2Title.text = getString(R.string.guide_mhs_step2_title)
+        guideBinding.tvGuideStep2Desc.text = getString(R.string.guide_mhs_step2_desc)
+        guideBinding.tvGuideStep3Title.text = getString(R.string.guide_mhs_step3_title)
+        guideBinding.tvGuideStep3Desc.text = getString(R.string.guide_mhs_step3_desc)
+        guideBinding.tvGuideStep4Title.text = getString(R.string.guide_mhs_step4_title)
+        guideBinding.tvGuideStep4Desc.text = getString(R.string.guide_mhs_step4_desc)
+
+        guideBinding.btnCloseGuide.setOnClickListener { sheetDialog.dismiss() }
+        sheetDialog.show()
+    }
+
+    private fun showAboutDialog() {
+        AlertDialog.Builder(requireContext())
+            .setTitle(getString(R.string.about_app_title))
+            .setMessage(getString(R.string.about_app_message))
+            .setPositiveButton(getString(R.string.btn_close), null)
+            .show()
+    }
+
+    private fun showMhsSettingsSheet() {
+        val ctx = requireContext()
+        val sheetDialog = BottomSheetDialog(ctx)
+        val sheetBinding = DialogMhsSettingsBinding.inflate(layoutInflater)
+        sheetDialog.setContentView(sheetBinding.root)
+
+        sheetBinding.btnDeletePhotoSheet.isEnabled = ProfilePhotoHelper.hasCustomAvatar(ctx)
+        sheetBinding.switchMhsVibrate.isChecked = SettingsHelper.isMhsNotifVibrateEnabled(ctx)
+        sheetBinding.switchMhsSound.isChecked = SettingsHelper.isMhsNotifSoundEnabled(ctx)
+
+        sheetBinding.btnChangePhotoSheet.setOnClickListener {
+            sheetDialog.dismiss()
+            pickAvatarLauncher.launch("image/*")
+        }
+
+        sheetBinding.btnDeletePhotoSheet.setOnClickListener {
+            ProfilePhotoHelper.deleteAvatar(ctx)
+            ProfilePhotoHelper.loadAvatarInto(ctx, binding.ivMhsAvatar)
+            sheetDialog.dismiss()
+            Snackbar.make(binding.root, getString(R.string.msg_avatar_removed), Snackbar.LENGTH_SHORT).show()
+        }
+
+        sheetBinding.switchMhsVibrate.setOnCheckedChangeListener { _, isChecked ->
+            SettingsHelper.setMhsNotifVibrateEnabled(ctx, isChecked)
+        }
+
+        sheetBinding.switchMhsSound.setOnCheckedChangeListener { _, isChecked ->
+            SettingsHelper.setMhsNotifSoundEnabled(ctx, isChecked)
+        }
+
+        sheetBinding.btnSystemNotifSettings.setOnClickListener {
+            sheetDialog.dismiss()
+            openSystemNotificationSettings()
+        }
+
+        sheetBinding.btnAboutApp.setOnClickListener {
+            sheetDialog.dismiss()
+            showAboutDialog()
+        }
+
+        sheetDialog.show()
+    }
+
+    private fun openSystemNotificationSettings() {
+        val ctx = requireContext()
+        val intent = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            Intent(Settings.ACTION_APP_NOTIFICATION_SETTINGS).apply {
+                putExtra(Settings.EXTRA_APP_PACKAGE, ctx.packageName)
+            }
+        } else {
+            Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS).apply {
+                data = Uri.fromParts("package", ctx.packageName, null)
+            }
+        }
+        startActivity(intent)
     }
 
     private fun confirmLogout() {

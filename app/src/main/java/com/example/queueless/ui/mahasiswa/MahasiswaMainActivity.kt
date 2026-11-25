@@ -1,9 +1,13 @@
 package com.example.queueless.ui.mahasiswa
 
 import android.Manifest
+import android.content.Context
 import android.content.pm.PackageManager
 import android.os.Build
 import android.os.Bundle
+import android.os.VibrationEffect
+import android.os.Vibrator
+import android.os.VibratorManager
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
@@ -12,6 +16,7 @@ import androidx.fragment.app.Fragment
 import com.example.queueless.R
 import com.example.queueless.databinding.ActivityMahasiswaMainBinding
 import com.example.queueless.utils.NotificationHelper
+import com.example.queueless.utils.SettingsHelper
 import com.example.queueless.utils.applyStatusBarTopPadding
 import com.example.queueless.viewmodel.MahasiswaViewModel
 import com.google.android.material.snackbar.Snackbar
@@ -75,7 +80,7 @@ class MahasiswaMainActivity : AppCompatActivity() {
                     true
                 }
                 R.id.nav_mhs_profile -> {
-                    loadFragment(HistoryProfileFragment(), getString(R.string.title_mhs_history))
+                    loadFragment(HistoryProfileFragment(), getString(R.string.title_settings))
                     true
                 }
                 else -> false
@@ -108,6 +113,9 @@ class MahasiswaMainActivity : AppCompatActivity() {
                     queue.nomorAntrean,
                     queue.namaLayanan
                 )
+                if (SettingsHelper.isMhsNotifVibrateEnabled(this)) {
+                    triggerCallVibration()
+                }
             }
         }
 
@@ -120,6 +128,21 @@ class MahasiswaMainActivity : AppCompatActivity() {
                 else -> getString(R.string.err_general, detail.orEmpty())
             }
             Snackbar.make(binding.root, message, Snackbar.LENGTH_SHORT).show()
+        }
+    }
+
+    private fun triggerCallVibration() {
+        try {
+            val vibrator = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+                val manager = getSystemService(Context.VIBRATOR_MANAGER_SERVICE) as? VibratorManager
+                manager?.defaultVibrator
+            } else {
+                @Suppress("DEPRECATION")
+                getSystemService(Context.VIBRATOR_SERVICE) as? Vibrator
+            }
+            vibrator?.vibrate(VibrationEffect.createOneShot(450, VibrationEffect.DEFAULT_AMPLITUDE))
+        } catch (_: SecurityException) {
+            // Aman jika izin getar tidak dideklarasikan di manifest
         }
     }
 }

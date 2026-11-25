@@ -17,6 +17,13 @@ object ProfilePhotoHelper {
         return File(context.filesDir, "profile_avatar_$uid.jpg")
     }
 
+    fun hasCustomAvatar(context: Context): Boolean = getAvatarFile(context).exists()
+
+    fun deleteAvatar(context: Context): Boolean {
+        val file = getAvatarFile(context)
+        return if (file.exists()) file.delete() else false
+    }
+
     fun saveAvatarFromUri(context: Context, uri: Uri): Boolean {
         return try {
             val inputStream = context.contentResolver.openInputStream(uri) ?: return false
