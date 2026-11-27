@@ -110,7 +110,7 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
-                <!-- 1. Riwayat Antrean (Aksen Biru) -->
+                <!-- 1. Riwayat Antrean -->
                 <LinearLayout
                     android:id="@+id/rowAdminHistory"
                     android:layout_width="match_parent"
@@ -126,7 +126,7 @@
                         android:layout_width="38dp"
                         android:layout_height="38dp"
                         android:background="@drawable/bg_icon_container"
-                        android:backgroundTint="#EEF2FF">
+                        android:backgroundTint="@color/icon_bg_history">
 
                         <ImageView
                             android:layout_width="20dp"
@@ -134,7 +134,7 @@
                             android:layout_gravity="center"
                             android:contentDescription="@string/menu_queue_history"
                             android:src="@drawable/ic_history"
-                            app:tint="#2563EB" />
+                            app:tint="@color/icon_tint_history" />
                     </FrameLayout>
 
                     <LinearLayout
@@ -167,10 +167,10 @@
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="6dp"
                         android:background="@drawable/bg_icon_container"
-                        android:backgroundTint="#EEF2FF"
+                        android:backgroundTint="@color/icon_bg_history"
                         android:paddingHorizontal="8dp"
                         android:paddingVertical="3dp"
-                        android:textColor="#2563EB"
+                        android:textColor="@color/icon_tint_history"
                         android:textSize="11sp"
                         android:textStyle="bold" />
 
@@ -187,7 +187,7 @@
                     android:layout_marginStart="67dp"
                     android:background="@color/divider_gray" />
 
-                <!-- 2. Pengaturan Loket & Panggilan Suara (Aksen Slate Netral) -->
+                <!-- 2. Pengaturan Loket & Panggilan Suara -->
                 <LinearLayout
                     android:id="@+id/rowAdminTtsSettings"
                     android:layout_width="match_parent"
@@ -203,7 +203,7 @@
                         android:layout_width="38dp"
                         android:layout_height="38dp"
                         android:background="@drawable/bg_icon_container"
-                        android:backgroundTint="#F1F5F9">
+                        android:backgroundTint="@color/icon_bg_settings">
 
                         <ImageView
                             android:layout_width="20dp"
@@ -211,7 +211,7 @@
                             android:layout_gravity="center"
                             android:contentDescription="@string/menu_admin_tts_settings"
                             android:src="@drawable/ic_settings"
-                            app:tint="#334155" />
+                            app:tint="@color/icon_tint_settings" />
                     </FrameLayout>
 
                     <LinearLayout
@@ -251,7 +251,7 @@
                     android:layout_marginStart="67dp"
                     android:background="@color/divider_gray" />
 
-                <!-- 3. Cara Penggunaan Aplikasi (Aksen Amber) -->
+                <!-- 3. Cara Penggunaan Aplikasi -->
                 <LinearLayout
                     android:id="@+id/rowAdminGuide"
                     android:layout_width="match_parent"
@@ -267,7 +267,7 @@
                         android:layout_width="38dp"
                         android:layout_height="38dp"
                         android:background="@drawable/bg_icon_container"
-                        android:backgroundTint="#FEF3C7">
+                        android:backgroundTint="@color/icon_bg_guide">
 
                         <ImageView
                             android:layout_width="20dp"
@@ -275,7 +275,7 @@
                             android:layout_gravity="center"
                             android:contentDescription="@string/menu_app_guide"
                             android:src="@drawable/ic_help_guide"
-                            app:tint="#D97706" />
+                            app:tint="@color/icon_tint_guide" />
                     </FrameLayout>
 
                     <LinearLayout
@@ -315,7 +315,7 @@
                     android:layout_marginStart="67dp"
                     android:background="@color/divider_gray" />
 
-                <!-- 4. Tentang Aplikasi (Aksen Biru Langit) -->
+                <!-- 4. Tentang Aplikasi -->
                 <LinearLayout
                     android:id="@+id/rowAdminAbout"
                     android:layout_width="match_parent"
@@ -331,7 +331,7 @@
                         android:layout_width="38dp"
                         android:layout_height="38dp"
                         android:background="@drawable/bg_icon_container"
-                        android:backgroundTint="#E0F2FE">
+                        android:backgroundTint="@color/icon_bg_info">
 
                         <ImageView
                             android:layout_width="20dp"
@@ -339,7 +339,7 @@
                             android:layout_gravity="center"
                             android:contentDescription="@string/menu_about_app"
                             android:src="@drawable/ic_info"
-                            app:tint="#0284C7" />
+                            app:tint="@color/icon_tint_info" />
                     </FrameLayout>
 
                     <LinearLayout

@@ -3,6 +3,7 @@ package com.example.queueless.ui.admin
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.WindowInsetsControllerCompat
 import androidx.fragment.app.Fragment
 import com.example.queueless.R
 import com.example.queueless.databinding.ActivityAdminMainBinding
@@ -21,6 +22,8 @@ class AdminMainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityAdminMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        WindowInsetsControllerCompat(window, window.decorView).isAppearanceLightStatusBars = false
         binding.headerAdmin.applyStatusBarTopPadding()
 
         voiceAnnouncer = VoiceAnnouncer(this)
@@ -30,12 +33,22 @@ class AdminMainActivity : AppCompatActivity() {
 
         if (savedInstanceState == null) {
             loadFragment(AdminQueueFragment(), getString(R.string.title_admin_queue))
+        } else {
+            restoreToolbarTitle(binding.bottomNavAdmin.selectedItemId)
         }
     }
 
     fun testVoiceAnnouncement(counterName: String, speechRate: Float) {
         if (::voiceAnnouncer.isInitialized) {
             voiceAnnouncer.testAnnouncement(counterName, speechRate)
+        }
+    }
+
+    private fun restoreToolbarTitle(selectedItemId: Int) {
+        binding.tvAdminToolbarTitle.text = when (selectedItemId) {
+            R.id.nav_admin_service -> getString(R.string.title_admin_service)
+            R.id.nav_admin_history -> getString(R.string.title_settings)
+            else -> getString(R.string.title_admin_queue)
         }
     }
 

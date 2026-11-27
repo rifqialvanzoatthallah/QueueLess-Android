@@ -32,6 +32,7 @@ class HistoryProfileFragment : Fragment() {
     private var _binding: FragmentHistoryProfileBinding? = null
     private val binding get() = _binding!!
     private val viewModel: MahasiswaViewModel by activityViewModels()
+    private var currentSheet: BottomSheetDialog? = null
 
     private val pickAvatarLauncher = registerForActivityResult(
         ActivityResultContracts.GetContent()
@@ -93,11 +94,20 @@ class HistoryProfileFragment : Fragment() {
         }
     }
 
+    private fun applyTransparentSheetContainer(sheetDialog: BottomSheetDialog) {
+        sheetDialog.setOnShowListener {
+            sheetDialog.findViewById<View>(com.google.android.material.R.id.design_bottom_sheet)
+                ?.setBackgroundResource(android.R.color.transparent)
+        }
+    }
+
     private fun showMhsHistorySheet() {
         val ctx = requireContext()
         val sheetDialog = BottomSheetDialog(ctx)
+        currentSheet = sheetDialog
         val sheetBinding = DialogHistorySheetBinding.inflate(layoutInflater)
         sheetDialog.setContentView(sheetBinding.root)
+        applyTransparentSheetContainer(sheetDialog)
 
         val historyList = viewModel.historyQueues.value.orEmpty()
         sheetBinding.tvHistorySheetTitle.text = getString(R.string.label_my_history_title)
@@ -120,8 +130,10 @@ class HistoryProfileFragment : Fragment() {
     private fun showMhsGuideSheet() {
         val ctx = requireContext()
         val sheetDialog = BottomSheetDialog(ctx)
+        currentSheet = sheetDialog
         val guideBinding = DialogAppGuideBinding.inflate(layoutInflater)
         sheetDialog.setContentView(guideBinding.root)
+        applyTransparentSheetContainer(sheetDialog)
 
         guideBinding.tvGuideTitle.text = getString(R.string.guide_mhs_title)
         guideBinding.tvGuideSubtitle.text = getString(R.string.guide_mhs_subtitle)
@@ -149,8 +161,10 @@ class HistoryProfileFragment : Fragment() {
     private fun showMhsSettingsSheet() {
         val ctx = requireContext()
         val sheetDialog = BottomSheetDialog(ctx)
+        currentSheet = sheetDialog
         val sheetBinding = DialogMhsSettingsBinding.inflate(layoutInflater)
         sheetDialog.setContentView(sheetBinding.root)
+        applyTransparentSheetContainer(sheetDialog)
 
         sheetBinding.btnDeletePhotoSheet.isEnabled = ProfilePhotoHelper.hasCustomAvatar(ctx)
         sheetBinding.switchMhsVibrate.isChecked = SettingsHelper.isMhsNotifVibrateEnabled(ctx)
@@ -179,11 +193,6 @@ class HistoryProfileFragment : Fragment() {
         sheetBinding.btnSystemNotifSettings.setOnClickListener {
             sheetDialog.dismiss()
             openSystemNotificationSettings()
-        }
-
-        sheetBinding.btnAboutApp.setOnClickListener {
-            sheetDialog.dismiss()
-            showAboutDialog()
         }
 
         sheetDialog.show()
@@ -219,6 +228,8 @@ class HistoryProfileFragment : Fragment() {
     }
 
     override fun onDestroyView() {
+        currentSheet?.dismiss()
+        currentSheet = null
         super.onDestroyView()
         _binding = null
     }

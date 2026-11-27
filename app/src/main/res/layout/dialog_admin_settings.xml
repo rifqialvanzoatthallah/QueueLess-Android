@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/surface_white"
+    android:background="@drawable/bg_bottom_sheet"
     android:fillViewport="true">
 
     <LinearLayout
@@ -14,7 +14,6 @@
         android:paddingTop="12dp"
         android:paddingBottom="24dp">
 
-        <!-- Handle Geser Atas -->
         <View
             android:layout_width="40dp"
             android:layout_height="4dp"
@@ -49,14 +48,18 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:hint="@string/hint_admin_counter_name">
+            android:hint="@string/hint_admin_counter_name"
+            app:helperText="@string/helper_admin_counter_name"
+            app:helperTextTextColor="@color/text_secondary">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/etAdminCounterName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textCapWords"
-                android:maxLines="1" />
+                android:maxLines="1"
+                android:textColor="@color/text_primary"
+                android:textSize="14sp" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <!-- Pilihan Kecepatan Pelafalan -->
@@ -65,7 +68,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="14dp"
             android:text="@string/label_tts_speed"
-            android:textColor="@color/primary_blue"
+            android:textColor="@color/text_secondary"
             android:textSize="12sp"
             android:textStyle="bold" />
 
@@ -73,7 +76,7 @@
             android:id="@+id/toggleTtsSpeed"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="6dp"
+            android:layout_marginTop="8dp"
             app:selectionRequired="true"
             app:singleSelection="true">
 
@@ -84,8 +87,11 @@
                 android:layout_height="44dp"
                 android:layout_weight="1"
                 android:text="@string/speed_slow"
-                android:textSize="12sp"
-                app:strokeColor="@color/primary_blue" />
+                android:textColor="@color/toggle_button_text"
+                android:textSize="13sp"
+                android:textStyle="bold"
+                app:backgroundTint="@color/toggle_button_bg"
+                app:strokeColor="@color/divider_gray" />
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btnSpeedNormal"
@@ -94,8 +100,11 @@
                 android:layout_height="44dp"
                 android:layout_weight="1"
                 android:text="@string/speed_normal"
-                android:textSize="12sp"
-                app:strokeColor="@color/primary_blue" />
+                android:textColor="@color/toggle_button_text"
+                android:textSize="13sp"
+                android:textStyle="bold"
+                app:backgroundTint="@color/toggle_button_bg"
+                app:strokeColor="@color/divider_gray" />
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btnSpeedFast"
@@ -104,27 +113,31 @@
                 android:layout_height="44dp"
                 android:layout_weight="1"
                 android:text="@string/speed_fast"
-                android:textSize="12sp"
-                app:strokeColor="@color/primary_blue" />
+                android:textColor="@color/toggle_button_text"
+                android:textSize="13sp"
+                android:textStyle="bold"
+                app:backgroundTint="@color/toggle_button_bg"
+                app:strokeColor="@color/divider_gray" />
         </com.google.android.material.button.MaterialButtonToggleGroup>
 
         <!-- Tombol Uji Suara & Simpan Pengaturan -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="14dp"
+            android:layout_marginTop="16dp"
             android:orientation="horizontal">
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btnTestAdminTts"
                 style="@style/Widget.Material3.Button.OutlinedButton"
                 android:layout_width="0dp"
-                android:layout_height="46dp"
+                android:layout_height="48dp"
                 android:layout_marginEnd="6dp"
                 android:layout_weight="1"
+                android:maxLines="1"
                 android:text="@string/btn_test_tts"
                 android:textColor="@color/primary_blue"
-                android:textSize="12sp"
+                android:textSize="13sp"
                 android:textStyle="bold"
                 app:cornerRadius="12dp"
                 app:strokeColor="@color/primary_blue" />
@@ -132,12 +145,13 @@
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btnSaveAdminSettings"
                 android:layout_width="0dp"
-                android:layout_height="46dp"
+                android:layout_height="48dp"
                 android:layout_marginStart="6dp"
-                android:layout_weight="1"
+                android:layout_weight="1.3"
+                android:maxLines="1"
                 android:text="@string/btn_save_settings"
                 android:textColor="@color/text_white"
-                android:textSize="12sp"
+                android:textSize="13sp"
                 android:textStyle="bold"
                 app:backgroundTint="@color/primary_blue"
                 app:cornerRadius="12dp" />
@@ -154,7 +168,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/section_profile_photo"
-            android:textColor="@color/primary_blue"
+            android:textColor="@color/text_secondary"
             android:textSize="12sp"
             android:textStyle="bold" />
 
@@ -171,9 +185,10 @@
                 android:layout_height="46dp"
                 android:layout_marginEnd="6dp"
                 android:layout_weight="1"
+                android:maxLines="1"
                 android:text="@string/btn_choose_gallery_photo"
-                android:textColor="@color/primary_blue_dark"
-                android:textSize="12sp"
+                android:textColor="@color/primary_blue"
+                android:textSize="13sp"
                 android:textStyle="bold"
                 app:backgroundTint="@color/primary_blue_light"
                 app:cornerRadius="12dp" />
@@ -185,40 +200,13 @@
                 android:layout_height="46dp"
                 android:layout_marginStart="6dp"
                 android:layout_weight="1"
+                android:maxLines="1"
                 android:text="@string/btn_remove_profile_photo"
                 android:textColor="@color/error_red"
-                android:textSize="12sp"
+                android:textSize="13sp"
                 android:textStyle="bold"
                 app:cornerRadius="12dp"
                 app:strokeColor="@color/error_red" />
         </LinearLayout>
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_marginVertical="16dp"
-            android:background="@color/divider_gray" />
-
-        <!-- Bagian Tentang Aplikasi -->
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/section_about_app"
-            android:textColor="@color/primary_blue"
-            android:textSize="12sp"
-            android:textStyle="bold" />
-
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btnAdminAboutApp"
-            style="@style/Widget.Material3.Button.TonalButton"
-            android:layout_width="match_parent"
-            android:layout_height="46dp"
-            android:layout_marginTop="8dp"
-            android:text="@string/btn_about_app"
-            android:textColor="@color/text_primary"
-            android:textSize="13sp"
-            android:textStyle="bold"
-            app:backgroundTint="@color/background_light"
-            app:cornerRadius="12dp" />
     </LinearLayout>
 </ScrollView>

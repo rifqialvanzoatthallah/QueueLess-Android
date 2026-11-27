@@ -35,4 +35,17 @@
     <!-- Warna Error -->
     <color name="error_red">#DC2626</color>
     <color name="error_red_bg">#FEE2E2</color>
+
+    <!-- Warna Wadah Ikon Menu & Toggle -->
+    <color name="icon_bg_history">#EEF2FF</color>
+    <color name="icon_tint_history">#2563EB</color>
+    <color name="icon_bg_settings">#F1F5F9</color>
+    <color name="icon_tint_settings">#334155</color>
+    <color name="icon_bg_guide">#FEF3C7</color>
+    <color name="icon_tint_guide">#D97706</color>
+    <color name="icon_bg_info">#E0F2FE</color>
+    <color name="icon_tint_info">#0284C7</color>
+    <color name="toggle_checked_bg">#E6F4EA</color>
+    <color name="toggle_checked_text">#15803D</color>
+    <color name="toggle_unchecked_text">#475569</color>
 </resources>

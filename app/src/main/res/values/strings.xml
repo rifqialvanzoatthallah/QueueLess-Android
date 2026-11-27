@@ -157,20 +157,20 @@
     <string name="cd_campus_illustration">Ilustrasi Gedung Kampus</string>
     <string name="msg_avatar_updated">Foto profil berhasil diperbarui</string>
     <string name="msg_avatar_failed">Gagal memuat foto dari galeri</string>
-    <string name="greeting_hello_user">Halo, %1\$s!</string>
+    <string name="greeting_hello_user">Halo, %1$s!</string>
     <string name="greeting_hello_default">Selamat Datang!</string>
     <string name="banner_mhs_subtitle">Ambil nomor antrean layanan akademik tanpa antre lama di loket.</string>
     <string name="banner_admin_subtitle">Kelola dan panggil antrean layanan akademik hari ini secara real-time.</string>
-    <string name="badge_active_services_count">%1\$d Layanan Tersedia</string>
-    <string name="badge_waiting_queues_count">%1\$d Antrean Menunggu</string>
+    <string name="badge_active_services_count">%1$d Layanan Tersedia</string>
+    <string name="badge_waiting_queues_count">%1$d Antrean Menunggu</string>
 
     <!-- Label Menu Pengaturan (Admin & Mahasiswa) -->
     <string name="btn_open_settings">Pengaturan Aplikasi</string>
     <string name="title_mhs_settings">Pengaturan Akun &amp; Notifikasi</string>
     <string name="title_admin_settings">Pengaturan Loket &amp; Panggilan Suara</string>
     <string name="section_profile_photo">Foto Profil</string>
-    <string name="btn_choose_gallery_photo">Pilih Foto dari Galeri</string>
-    <string name="btn_remove_profile_photo">Hapus Foto Profil</string>
+    <string name="btn_choose_gallery_photo">Ganti Foto</string>
+    <string name="btn_remove_profile_photo">Hapus Foto</string>
     <string name="msg_avatar_removed">Foto profil dikembalikan ke bawaan</string>
     <string name="section_notif_pref">Preferensi Notifikasi Antrean</string>
     <string name="label_switch_vibrate">Getaran Saat Nomor Dipanggil</string>
@@ -182,12 +182,13 @@
     <string name="about_app_message">QueueLess v1.0\nSistem Antrean Layanan Digital Kampus\nUniversitas Malikussaleh\n\nAplikasi antrean real-time dengan tiket QR Code dinamis, notifikasi panggilan langsung, dan pengumuman suara otomatis.</string>
     <string name="btn_close">Tutup</string>
     <string name="label_switch_admin_tts">Panggilan Suara Otomatis (TTS)</string>
-    <string name="hint_admin_counter_name">Nama / Nomor Loket (Contoh: Loket 1 Akademik)</string>
+    <string name="hint_admin_counter_name">Nama / Nomor Loket</string>
+    <string name="helper_admin_counter_name">Contoh: Loket 1 - Layanan Akademik</string>
     <string name="label_tts_speed">Kecepatan Pelafalan Suara</string>
     <string name="speed_slow">Lambat</string>
     <string name="speed_normal">Normal</string>
     <string name="speed_fast">Cepat</string>
-    <string name="btn_test_tts">Uji Coba Suara Loket</string>
+    <string name="btn_test_tts">Uji Suara</string>
     <string name="btn_save_settings">Simpan Pengaturan</string>
     <string name="msg_settings_saved">Pengaturan berhasil disimpan</string>
 
@@ -238,4 +239,10 @@
     <string name="guide_admin_step4_desc">Gunakan menu Pengaturan Loket &amp; Suara untuk menyesuaikan nama loket tujuan dan kecepatan pelafalan suara pengumuman.</string>
 
     <string name="btn_understand">Mengerti</string>
+
+    <!-- Label Tema Tampilan (Mode Gelap) -->
+    <string name="label_app_theme">Tema Tampilan Aplikasi</string>
+    <string name="theme_system">Sistem</string>
+    <string name="theme_light">Terang</string>
+    <string name="theme_dark">Gelap</string>
 </resources>

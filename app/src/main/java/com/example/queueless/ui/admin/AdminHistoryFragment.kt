@@ -29,6 +29,7 @@ class AdminHistoryFragment : Fragment() {
     private var _binding: FragmentAdminHistoryBinding? = null
     private val binding get() = _binding!!
     private val viewModel: AdminViewModel by activityViewModels()
+    private var currentSheet: BottomSheetDialog? = null
 
     private val pickAvatarLauncher = registerForActivityResult(
         ActivityResultContracts.GetContent()
@@ -89,11 +90,20 @@ class AdminHistoryFragment : Fragment() {
         }
     }
 
+    private fun applyTransparentSheetContainer(sheetDialog: BottomSheetDialog) {
+        sheetDialog.setOnShowListener {
+            sheetDialog.findViewById<View>(com.google.android.material.R.id.design_bottom_sheet)
+                ?.setBackgroundResource(android.R.color.transparent)
+        }
+    }
+
     private fun showAdminHistorySheet() {
         val ctx = requireContext()
         val sheetDialog = BottomSheetDialog(ctx)
+        currentSheet = sheetDialog
         val sheetBinding = DialogHistorySheetBinding.inflate(layoutInflater)
         sheetDialog.setContentView(sheetBinding.root)
+        applyTransparentSheetContainer(sheetDialog)
 
         val historyList = viewModel.historyQueues.value.orEmpty()
         sheetBinding.tvHistorySheetTitle.text = getString(R.string.label_today_history)
@@ -116,8 +126,10 @@ class AdminHistoryFragment : Fragment() {
     private fun showAdminGuideSheet() {
         val ctx = requireContext()
         val sheetDialog = BottomSheetDialog(ctx)
+        currentSheet = sheetDialog
         val guideBinding = DialogAppGuideBinding.inflate(layoutInflater)
         sheetDialog.setContentView(guideBinding.root)
+        applyTransparentSheetContainer(sheetDialog)
 
         guideBinding.tvGuideTitle.text = getString(R.string.guide_admin_title)
         guideBinding.tvGuideSubtitle.text = getString(R.string.guide_admin_subtitle)
@@ -145,8 +157,10 @@ class AdminHistoryFragment : Fragment() {
     private fun showAdminSettingsSheet() {
         val ctx = requireContext()
         val sheetDialog = BottomSheetDialog(ctx)
+        currentSheet = sheetDialog
         val sheetBinding = DialogAdminSettingsBinding.inflate(layoutInflater)
         sheetDialog.setContentView(sheetBinding.root)
+        applyTransparentSheetContainer(sheetDialog)
 
         sheetBinding.switchAdminTts.isChecked = SettingsHelper.isAdminTtsEnabled(ctx)
         sheetBinding.etAdminCounterName.setText(SettingsHelper.getAdminCounterName(ctx))
@@ -196,11 +210,6 @@ class AdminHistoryFragment : Fragment() {
             Snackbar.make(binding.root, getString(R.string.msg_avatar_removed), Snackbar.LENGTH_SHORT).show()
         }
 
-        sheetBinding.btnAdminAboutApp.setOnClickListener {
-            sheetDialog.dismiss()
-            showAboutDialog()
-        }
-
         sheetDialog.show()
     }
 
@@ -220,6 +229,8 @@ class AdminHistoryFragment : Fragment() {
     }
 
     override fun onDestroyView() {
+        currentSheet?.dismiss()
+        currentSheet = null
         super.onDestroyView()
         _binding = null
     }

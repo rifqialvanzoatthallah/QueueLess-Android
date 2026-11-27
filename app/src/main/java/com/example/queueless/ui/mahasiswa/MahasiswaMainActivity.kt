@@ -12,6 +12,7 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
+import androidx.core.view.WindowInsetsControllerCompat
 import androidx.fragment.app.Fragment
 import com.example.queueless.R
 import com.example.queueless.databinding.ActivityMahasiswaMainBinding
@@ -44,6 +45,7 @@ class MahasiswaMainActivity : AppCompatActivity() {
         binding = ActivityMahasiswaMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        WindowInsetsControllerCompat(window, window.decorView).isAppearanceLightStatusBars = false
         binding.headerMahasiswa.applyStatusBarTopPadding()
         NotificationHelper.createNotificationChannel(this)
         checkNotificationPermission()
@@ -53,6 +55,16 @@ class MahasiswaMainActivity : AppCompatActivity() {
 
         if (savedInstanceState == null) {
             loadFragment(HomeServiceFragment(), getString(R.string.title_mhs_home))
+        } else {
+            restoreToolbarTitle(binding.bottomNavMahasiswa.selectedItemId)
+        }
+    }
+
+    private fun restoreToolbarTitle(selectedItemId: Int) {
+        binding.tvMhsToolbarTitle.text = when (selectedItemId) {
+            R.id.nav_mhs_queue -> getString(R.string.title_my_queue)
+            R.id.nav_mhs_profile -> getString(R.string.title_settings)
+            else -> getString(R.string.title_mhs_home)
         }
     }
 
