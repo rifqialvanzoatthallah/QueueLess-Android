@@ -2,10 +2,12 @@ package com.example.queueless.ui.mahasiswa
 
 import android.app.Activity
 import android.content.Intent
+import android.content.res.ColorStateList
 import android.os.Bundle
 import android.view.View
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import com.example.queueless.R
 import com.example.queueless.databinding.ActivityDetailServiceBinding
 import com.example.queueless.model.Service
@@ -18,6 +20,7 @@ class DetailServiceActivity : AppCompatActivity() {
     private lateinit var binding: ActivityDetailServiceBinding
     private val viewModel: MahasiswaViewModel by viewModels()
     private lateinit var currentService: Service
+    private var remainingQuota: Int = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -43,6 +46,14 @@ class DetailServiceActivity : AppCompatActivity() {
 
         binding.btnBackDetail.setOnClickListener { finish() }
         binding.btnTakeQueue.setOnClickListener {
+            if (remainingQuota <= 0) {
+                Snackbar.make(
+                    binding.root,
+                    getString(R.string.msg_quota_full),
+                    Snackbar.LENGTH_LONG
+                ).show()
+                return@setOnClickListener
+            }
             viewModel.takeQueue(currentService)
         }
     }
@@ -59,10 +70,24 @@ class DetailServiceActivity : AppCompatActivity() {
         } else {
             0
         }
-        val remaining = (service.kuotaHarian - usedToday).coerceAtLeast(0)
+        remainingQuota = (service.kuotaHarian - usedToday).coerceAtLeast(0)
         binding.tvDetailQuota.text =
-            getString(R.string.label_sisa_kuota_hari_ini, remaining, service.kuotaHarian)
-        binding.btnTakeQueue.isEnabled = remaining > 0
+            getString(R.string.label_sisa_kuota_hari_ini, remainingQuota, service.kuotaHarian)
+
+        updateTakeQueueButtonState(isAvailable = remainingQuota > 0)
+    }
+
+    private fun updateTakeQueueButtonState(isAvailable: Boolean) {
+        binding.btnTakeQueue.isEnabled = true
+        if (isAvailable) {
+            binding.btnTakeQueue.backgroundTintList =
+                ColorStateList.valueOf(ContextCompat.getColor(this, R.color.primary_blue))
+            binding.btnTakeQueue.setTextColor(ContextCompat.getColor(this, R.color.text_white))
+        } else {
+            binding.btnTakeQueue.backgroundTintList =
+                ColorStateList.valueOf(ContextCompat.getColor(this, R.color.divider_gray))
+            binding.btnTakeQueue.setTextColor(ContextCompat.getColor(this, R.color.text_muted))
+        }
     }
 
     private fun setupObservers() {
@@ -76,7 +101,11 @@ class DetailServiceActivity : AppCompatActivity() {
 
         viewModel.isLoading.observe(this) { loading ->
             binding.progressBarDetail.visibility = if (loading) View.VISIBLE else View.GONE
-            if (loading) binding.btnTakeQueue.isEnabled = false
+            if (loading) {
+                binding.btnTakeQueue.isEnabled = false
+            } else {
+                updateTakeQueueButtonState(isAvailable = remainingQuota > 0)
+            }
         }
 
         viewModel.takeQueueResult.observe(this) { result ->
@@ -88,7 +117,7 @@ class DetailServiceActivity : AppCompatActivity() {
                 setResult(Activity.RESULT_OK, resultIntent)
                 finish()
             }.onFailure { error ->
-                binding.btnTakeQueue.isEnabled = true
+                updateTakeQueueButtonState(isAvailable = remainingQuota > 0)
                 val msg = when (error.message) {
                     "ACTIVE_QUEUE_EXISTS" -> getString(R.string.msg_active_queue_exists)
                     "QUOTA_FULL" -> getString(R.string.msg_quota_full)

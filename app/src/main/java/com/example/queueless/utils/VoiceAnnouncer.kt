@@ -60,7 +60,7 @@ class VoiceAnnouncer(context: Context) : TextToSpeech.OnInitListener {
     private fun speakInternal(nomorAntrean: String, counterName: String, speechRate: Float) {
         val spokenNumber = formatQueueNumberForSpeech(nomorAntrean)
         val destination = if (counterName.isNotEmpty()) counterName else "loket pelayanan"
-        val announcement = "Nomor antrean, $spokenNumber, silakan menuju$destination."
+        val announcement = "Nomor antrean, $spokenNumber, silakan menuju $destination."
 
         tts?.setSpeechRate(speechRate)
         tts?.setPitch(1.0f)
@@ -68,16 +68,20 @@ class VoiceAnnouncer(context: Context) : TextToSpeech.OnInitListener {
             announcement,
             TextToSpeech.QUEUE_FLUSH,
             null,
-            "QUEUE_CALL_\$nomorAntrean"
+            "QUEUE_CALL_$nomorAntrean"
         )
     }
 
     private fun formatQueueNumberForSpeech(rawNumber: String): String {
-        // Mengubah format "A-001" menjadi "A, 0 0 1" agar pelafalan setiap digit jelas
+        // Mengubah format "A-001" menjadi "A, nol nol 1" agar pelafalan setiap digit jelas
         return rawNumber
             .replace("-", ", ")
             .map { char ->
-                if (char.isDigit()) "\$char " else char.toString()
+                when {
+                    char == '0' -> "nol "
+                    char.isDigit() -> "$char "
+                    else -> char.toString()
+                }
             }
             .joinToString("")
             .trim()

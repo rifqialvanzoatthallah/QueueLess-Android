@@ -239,10 +239,4 @@
     <string name="guide_admin_step4_desc">Gunakan menu Pengaturan Loket &amp; Suara untuk menyesuaikan nama loket tujuan dan kecepatan pelafalan suara pengumuman.</string>
 
     <string name="btn_understand">Mengerti</string>
-
-    <!-- Label Tema Tampilan (Mode Gelap) -->
-    <string name="label_app_theme">Tema Tampilan Aplikasi</string>
-    <string name="theme_system">Sistem</string>
-    <string name="theme_light">Terang</string>
-    <string name="theme_dark">Gelap</string>
 </resources>
